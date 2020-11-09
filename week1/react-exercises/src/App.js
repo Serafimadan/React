@@ -1,11 +1,18 @@
 import './App.css';
-import HobbyList from './components/HobbyList';
 
-function App() {
+import HobbyList from './components/firstExercise/HobbyList';
+import BlockGuarantee from './components/secondExercise/BlockGuarantee';
+import Counter from './components/thirdExercise/Counter';
+
+
+
+function App() { 
+
   return (
     <div className="App">
-      Hello world  
-      <HobbyList/>
+    <HobbyList />
+    <BlockGuarantee />
+    <Counter />
     </div>
   );
 }
