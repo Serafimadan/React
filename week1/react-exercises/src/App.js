@@ -13,6 +13,10 @@ function App() {
     <HobbyList />
     <BlockGuarantee />
     <Counter />
+    <div className = 'lastBlock'>
+    <h2>Project link</h2>
+    <a href = 'https://weather-in-the-world.netlify.app/'>Hackyourweather app</a>
+    </div>
     </div>
   );
 }
