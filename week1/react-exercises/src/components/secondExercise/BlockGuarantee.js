@@ -4,7 +4,7 @@ import picChat from '../source/chat.png';
 import picCoin from '../source/coin.png';
 import picDelivery from '../source/f-delivery.png';
 
-const items = [
+const guaranteesArray = [
     {
         id: 1,
         img: picChat,
@@ -26,12 +26,16 @@ const items = [
 ];
 
 const BlockGuarantee = () => {
-const newArray = items.map(item => (<Guarantee key={item.id} picture = {item.img} title = {item.title} description = {item.description}/>))
+    const getGuaranteesList = guaranteesArray.map(({ id, img, title, description }) => {
+        return (
+            <Guarantee key={ id } picture = { img } title = { title } description = { description }/>
+        );
+    });
     return (
         <div className = 'container'>
             <h2>Second exercise!</h2>
             <div className = 'blocks-container'> 
-                {newArray}
+                { getGuaranteesList }
             </div>
         </div>
     )

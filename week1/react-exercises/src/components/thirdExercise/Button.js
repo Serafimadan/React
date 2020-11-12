@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Button = (props) => {
+const Button = ({ handleClickAsync }) => {
     // create a <button> with the text Add 1! and onClick attribute
     return (   
-        <button onClick={props.handleClickAsync}>
+        <button onClick={ handleClickAsync }>
             Add 1!
         </button> 
     )

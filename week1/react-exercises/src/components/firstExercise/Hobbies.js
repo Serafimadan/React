@@ -1,7 +1,9 @@
 import React from 'react';
 
-const Hobbies = (props) => {
+const Hobbies = ({ hobby }) => {
     
-    return  <li className = 'hobby-element'> Hobby: {props.hobby}</li>;
+    return  <li className = 'hobby-element'> 
+                Hobby: { hobby }
+            </li>;
 }
 export default Hobbies;

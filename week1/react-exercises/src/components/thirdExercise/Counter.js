@@ -11,8 +11,8 @@ const Counter = () => {
                 <h2>Exercise three!</h2>
                 <div className = 'counter-container'>
                     <p>You clicked <i>{count}</i> times</p>
-                        {feedback}
-                        <Count count = {count} setCount = {setCount}/>
+                    {feedback}
+                        <Count count = { count } setCount = { setCount }/>
                 </div>
             </div>
         );

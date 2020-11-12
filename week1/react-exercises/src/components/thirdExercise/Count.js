@@ -1,14 +1,14 @@
 import React from 'react';
 import Button from './Button';
 
-const Count = (props) => {
+const Count = ({ setCount, count }) => {
     // create function for counting 
     const handleClickAsync = () => {
-        props.setCount(props.count + 1)
+       return setCount(count + 1);
     }
     return (
         <div>
-            <Button handleClickAsync = {handleClickAsync}/>
+            <Button handleClickAsync = { handleClickAsync }/>
         </div>
     )
 }

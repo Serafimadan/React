@@ -10,14 +10,14 @@ function App() {
 
   return (
     <div className="App">
-    <HobbyList />
-    <BlockGuarantee />
-    <Counter />
-    <div className = 'lastBlock'>
-    <h2>Project link</h2>
-    <a href = 'https://weather-in-the-world.netlify.app/'>Hackyourweather app</a>
-    <a href = 'https://github.com/Serafimadan/hackyourweather'>Source folder</a>
-    </div>
+      <HobbyList />
+      <BlockGuarantee />
+      <Counter />
+      <div className = 'lastBlock'>
+      <h2>Project link</h2>
+      <a href = 'https://weather-in-the-world.netlify.app/'>Hackyourweather app</a>
+      <a href = 'https://github.com/Serafimadan/hackyourweather'>Source folder</a>
+      </div>
     </div>
   );
 }
