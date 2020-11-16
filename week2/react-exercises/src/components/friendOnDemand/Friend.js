@@ -23,7 +23,7 @@ const Friend = () => {
     }, [])
 
     return ( 
-        <div>
+        <div className = 'container'>
             {isLoading && <p>Loading ...</p>}
             <FriendProfile 
                 friendProps = { 

@@ -28,7 +28,21 @@
   color: #61dafb;
 }
 
-.friendButton {
+h3 {
+  text-decoration: underline wavy blue;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+}
+
+img {
+  width: 450px;
+  height: auto;
+}
+
+.button {
   padding: 15px;
   font-weight: bold;
   background-color: #28f72875;
@@ -37,13 +51,17 @@
   font-size: 1.3rem;
 }
 
-.friendButton:focus, .friendButton:active {
+.button:focus, .button:active {
   border-color: transparent;
   outline: none;
 }
 
-.friendButton:hover {
+.button:hover {
   background-color: #4eec4ee8;
+}
+
+.button-container {
+  align-self: center;
 }
 
 .friendInfo {
@@ -52,6 +70,12 @@
 
 .friendInfo li { 
   font-size: 1.2rem;
+}
+
+.setup {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: bold;
 }
 
 @keyframes App-logo-spin {

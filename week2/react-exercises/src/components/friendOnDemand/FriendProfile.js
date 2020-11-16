@@ -4,7 +4,7 @@ const FriendProfile = ({ friendProps }) => {
     // destructure 
     const { friend, error } = friendProps;
     return (  
-        <div>
+        <div >
             {/* if we don't have an error we will see an inform about friend */}
             {!error && friend.name && (
                 <ul className = 'friendInfo'>

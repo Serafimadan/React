@@ -2,10 +2,12 @@ import React from 'react';
 
 const Button = ({ getDogPhoto }) => {
     // create a <button>  and onClick attribute
-    return (   
-        <button onClick = { getDogPhoto } className = 'dogButton'>
-            Get a dog!
-        </button> 
+    return (  
+        <div className = 'button-container'> 
+            <button onClick = { getDogPhoto } className = 'button'>
+                Get a dog!
+            </button> 
+        </div>
     )
 }
 

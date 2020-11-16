@@ -1,6 +1,7 @@
 import './App.css';
 import DogGallery from './components/dogPhotoGallery/DogGallery';
 import Friend from './components/friendOnDemand/Friend';
+import RandomJoke from './components/jokeGenerator/RandomJoke';
 
 function App() {
   return (
@@ -9,6 +10,8 @@ function App() {
       <Friend />
       <h3>Second exercise:</h3>
       <DogGallery />
+      <h3>Third exercise:</h3>
+      <RandomJoke />
     </div>
   );
 }

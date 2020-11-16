@@ -25,7 +25,7 @@ const DogGallery = () => {
     }, [])
     
     return (   
-        <div>
+        <div className = 'container'>
             {isLoading && <p>Loading ...</p>}
             {!error && <DogPhoto dogUrl = {dogPhotos}/>}
             <Button getDogPhoto = {getDogPhoto}/>
