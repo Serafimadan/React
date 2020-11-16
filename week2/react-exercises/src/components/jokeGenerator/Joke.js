@@ -4,8 +4,12 @@ const Joke = ({ joke }) => {
     
     return (   
         <div>
-            <p className = 'setup'>{joke.setup}</p>
-            <p className = 'setup'>{joke.punchline}</p>
+            <p className = 'setup'>
+                {joke.setup}
+            </p>
+            <p className = 'setup'>
+                {joke.punchline}
+            </p>
         </div>
     )
 }
