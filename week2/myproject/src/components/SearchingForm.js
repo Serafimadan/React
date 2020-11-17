@@ -10,7 +10,7 @@ const SearchForm = ({ getWeatherInfo, setCity, city }) => {
                     maxLength = '50'
                     value = {city}
                     onChange = {(e) => setCity(e.target.value)}
-                /> <i className ="fa fa-envelope-o fa-fw"></i>
+                /> 
                 <button className = 'buttonSearch' type = 'submit'>Search</button>
         </form>
     );
