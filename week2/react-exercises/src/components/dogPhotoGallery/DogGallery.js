@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import DogPhoto from './DogPhoto';
 
@@ -11,7 +11,7 @@ const DogGallery = () => {
         fetch('https://dog.ceo/api/breeds/image/random')
         .then(response => response.json())
         .then(data => { 
-            setDogPhotos(data.message);
+            setDogPhotos([...dogPhotos, data.message]);
             setLoading(false);
         })
         .catch((err) => {
@@ -20,14 +20,17 @@ const DogGallery = () => {
             setLoading(false);
         }) 
     }
-    useEffect(() => {
-        getDogPhoto();
-    }, [])
+    // useEffect(() => {
+    //    getDogPhoto();
+    // }, [])
     
     return (   
-        <div className = 'container'>
+        <div>
             {isLoading && <p>Loading ...</p>}
-            {!error && <DogPhoto dogUrl = {dogPhotos}/>}
+            {dogPhotos.length === 0 ? 
+                "Get your first dog by clicking the button!" : 
+                !error && <div>{dogPhotos.map(dog => <DogPhoto dogUrl = {dog} key = {dog.i}/>)}</div>
+            }
             <Button getDogPhoto = {getDogPhoto}/>
             {error && <p>So sorry! Something went wrong.</p>}  
         </div>

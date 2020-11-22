@@ -4,7 +4,7 @@ const Button = ({ getDogPhoto }) => {
     // create a <button>  and onClick attribute
     return (  
         <div className = 'button-container'> 
-            <button onClick = { getDogPhoto } className = 'button'>
+            <button onClick = { getDogPhoto } className = 'button' >
                 Get a dog!
             </button> 
         </div>
