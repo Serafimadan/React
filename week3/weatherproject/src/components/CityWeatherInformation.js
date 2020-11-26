@@ -8,7 +8,7 @@ const CityWeatherInformation = (props) => {
     }
     return (
         <div >
-            {props.error && <p >There is no such city in the world! Please enter a valid city.</p>}
+            
             {props.loading && <div>Loadoing...</div>}
             {props.weatherInfo.cod === 200 ?           
                 <div className = 'city-element'> 

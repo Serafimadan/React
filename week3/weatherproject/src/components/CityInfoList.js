@@ -12,6 +12,9 @@ const CityInfoList = () => {
     
     function getWeatherInfo(e) {
         e.preventDefault();
+        if (city.length === 0) {
+            return setError(true);
+        }
         // clear state in preparation for new data
         setError(false);
         setWeatherInfo([]);
@@ -41,12 +44,13 @@ const CityInfoList = () => {
             <h1>Weather</h1>
             <SearchForm getWeatherInfo = {getWeatherInfo} setCity = {setCity} city={city}/>
             <div className = 'weather-list'>
+            {error && <p >Please enter a valid city!</p>}
             {!error && 
                     <div>{weatherInfo.map((cityForcast, id) => 
                         <CityWeatherInformation 
                             key = {id} 
                             weatherInfo={cityForcast}
-                            error={error}
+                            
                             loading={loading}
                             index={id}
                             deleteCard={deleteCard}    
