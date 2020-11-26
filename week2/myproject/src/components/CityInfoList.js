@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import SearchForm from './SearchingForm';
 import CityWeatherInformation from './CityWeatherInformation';
+const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 
 const CityInfoList = () => {
     let [city, setCity] = useState('');
     let [weatherInfo, setWeatherInfo] = useState({});
     let [error, setError] = useState(false);
     let [loading, setLoading] = useState(false);
-    
-    const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
     
     function getWeatherInfo(e) {
         e.preventDefault();
@@ -39,6 +38,7 @@ const CityInfoList = () => {
         <div className = 'container'>
             <h1>Weather</h1>
             <SearchForm getWeatherInfo = {getWeatherInfo} setCity = {setCity} city={city}/>
+            {error && <p >There is no such city in the world! Please enter a valid city.</p>}
             <div className = 'weather-list'>
                 <CityWeatherInformation 
                     weatherInfo={weatherInfo}

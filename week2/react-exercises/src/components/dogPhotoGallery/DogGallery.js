@@ -20,16 +20,13 @@ const DogGallery = () => {
             setLoading(false);
         }) 
     }
-    // useEffect(() => {
-    //    getDogPhoto();
-    // }, [])
     
     return (   
         <div>
             {isLoading && <p>Loading ...</p>}
             {dogPhotos.length === 0 ? 
                 "Get your first dog by clicking the button!" : 
-                !error && <div>{dogPhotos.map(dog => <DogPhoto dogUrl = {dog} key = {dog.i}/>)}</div>
+                !error && <div>{dogPhotos.map(dog => <DogPhoto dogUrl = {dog} key = {dog}/>)}</div>
             }
             <Button getDogPhoto = {getDogPhoto}/>
             {error && <p>So sorry! Something went wrong.</p>}  

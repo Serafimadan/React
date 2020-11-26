@@ -4,7 +4,7 @@ const DogPhoto = ({ dogUrl }) => {
     
     return (   
         <div>
-            <img src = {dogUrl} alt = 'one of dogs'/>
+            <img src = {dogUrl} alt = 'dog'/>
         </div>
     )
 }

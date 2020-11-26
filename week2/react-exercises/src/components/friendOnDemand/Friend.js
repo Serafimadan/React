@@ -4,7 +4,7 @@ import FriendProfile from './FriendProfile';
 
 const Friend = () => {
     const [friend, setFriend] = useState({});
-    const [error, setError] = useState('');
+    const [error, setError] = useState(false);
     const [isLoading, setLoading] = useState(false);
 
     function getFriend() {
@@ -14,7 +14,7 @@ const Friend = () => {
         .then(data => setFriend(data.results[0]))
         .catch((err) => {
             console.log(err)
-            setError(err)
+            setError(true)
         }) 
         setLoading(false);
     }
