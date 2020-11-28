@@ -50,7 +50,6 @@ const CityInfoList = () => {
                         <CityWeatherInformation 
                             key = {id} 
                             weatherInfo={cityForcast}
-                            
                             loading={loading}
                             index={id}
                             deleteCard={deleteCard}    
