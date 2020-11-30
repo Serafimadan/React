@@ -27,7 +27,6 @@ const CityInfoList = () => {
             }
             setWeatherInfo([...weatherInfo, response]);
             setLoading(false);
-            setCity('');
         })
         .catch(error => {
             setError(true);
