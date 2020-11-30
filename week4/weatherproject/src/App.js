@@ -12,8 +12,8 @@ function App() {
     <Router>
       <div className='App'>
         <Switch>
-          <Route path='/:cityId'>
-            <CityForcast />
+          <Route path='/:cityId' component={ CityForcast }>
+           
           </Route>
           <Route path='/'>
             <CityInfoList/>
