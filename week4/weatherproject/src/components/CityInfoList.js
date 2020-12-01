@@ -31,6 +31,7 @@ const CityInfoList = () => {
             if (response.cod !== 200) {
                 throw new Error()
             }
+            console.log(response.id);
             setWeatherInfo([...weatherInfo, response]);
             setLoading(false);
             // clear input after press the button
@@ -57,7 +58,8 @@ const CityInfoList = () => {
             {!error && 
                     <div>{weatherInfo.map((cityForcast, id) => 
                         <CityWeatherInformation 
-                            key={id} 
+                            key={cityForcast.id} 
+                            id={cityForcast.id}
                             weatherInfo={cityForcast}
                             loading={loading}
                             index={id}

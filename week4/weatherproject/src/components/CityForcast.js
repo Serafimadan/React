@@ -1,77 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import {
-    AreaChart,
-    Area,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    ResponsiveContainer,
-} from "recharts";
+import { Button } from '@material-ui/core';
+
+import Chart from './Chart';
 const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 
+// to get parameters for routes in a component we need to refer to the match.params
 const CityForcast = ({match}) => {
-    const [forecast, setForecast] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [forecast, setForecast] = useState({});
     const [error, setError] = useState(false);
-    useEffect(() => {
-        // clear state in preparation for new data
-        fetch(`api.openweathermap.org/data/2.5/forecast?q=${match.params.cityId}&appid=${API_KEY}`)
-        .then(response => response.json())
-        .then(response => { 
-            if (response.cod !== 200) {
-                setError("City is not found!");
-            } else {
-                let newData = {
-                    name: response.city.name,
-                    country: response.city.country,
-                    list: response.list.map((item) => ({
-                    date: item.dt_txt,
-                    temp: Math.round((item.main.temp - 273.15) * 100) / 100,
-                })),
-            };
-            setForecast(newData);
-            console.log(newData);
-            setLoading(true)
-        }
-    })
-})
+    const [loading, setLoading] = useState(false);
+    function converterTemperature(valNum) {
+        let Celsius = valNum -273.15;
+        return Math.round(Celsius);
+    }
 
+    useEffect(() => {
+        const fetchWeatherForcast = () => {
+            setError(false);
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?id=${match.params.cityId}&appid=${API_KEY}`)
+            .then(response => response.json())
+            .then(response => { 
+                // ????? works 'cod' as string not a number
+                if (response.cod !== '200') {
+                    throw new Error();
+                } else {
+                    console.log(response)
+                    const dataWeather = {
+                        name: response.city.name,
+                        country: response.city.country,
+                        list: response.list.map(item => ({
+                        dateTime: item.dt_txt,
+                        temp: converterTemperature(item.main.temp),
+                        })),
+                    };
+                    setForecast(dataWeather);
+                }
+            }) 
+            .catch(error => {
+                setLoading(false);
+                setError(true);
+                console.log(error.message);
+            });
+        }
+        fetchWeatherForcast();
+    }, [match.params.cityId]);
 
     return (
         <div className = 'container-forcast'>
-            <div>
-                {loading && <div>Loadoing...</div>}
-                <div>{error && <p >Please enter a valid city!</p>}</div>
-            </div>
-            {forecast && (
-                <h1>
-                    5 day forecast for {forecast.name}, {forecast.country}: 
-                </h1>
-            )}
-            {forecast && (
-                <div className="forecastCard">
-                    <div style={{ width: "100%", height: 300, fontSize: 9 }}>
-                        <ResponsiveContainer>
-                            <AreaChart
-                                data={forecast.list}
-                                margin={{top: 10,right: 30,left: 0,bottom: 0,}}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="date"/>
-                                <YAxis />
-                                <Tooltip />
-                                <Area type="monotone" dataKey="temp" stroke="#8884d8" fill="#8884d8"/>
-                            </AreaChart>
-                        </ResponsiveContainer>
-                    </div>
-                </div>
-            )}
+            <div>{error && <p >Please enter a valid city!</p>}</div>
+            <Chart loading={loading} forecast={forecast}/>
             <Link  to="/">
-                <button className="buttonBack">Go back</button>
+                <Button variant="contained" color="primary">Go back</Button>
             </Link>
         </div>
     )
 }
-    
+
 export default CityForcast;

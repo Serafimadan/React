@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 .App {
   text-align: center;
-  
 }
 
 .App-logo {
@@ -23,7 +22,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: #ffffff;
 }
 
 .App-link {
@@ -34,14 +33,45 @@ h1 {
   color: #3b3fce;
 }
 a {
-  color: #111111;
+  color: #ffffff;
 }
 
 .city-element {
   border: 4px double #3b3fce;
   list-style-type: none;
   margin-bottom: 50px;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0.52),
+      rgba(0, 195, 255, 0.73)
+    );
+  background-repeat: no-repeat;
+  transition: 0.2s ease;
   
+}
+
+.city-element.hot {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 16, 16, 0.52),
+      rgb(0 0 0 / 36%) 
+    ),
+    url('sources/hot.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.2s ease;
+}
+
+.city-element.cold {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 255, 213, 0.52),
+      rgb(0 0 0 / 36%)
+    ),
+    url('sources/cold.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.2s ease;
 }
 
 .weather-list {
@@ -72,7 +102,7 @@ form {
 }
 
 .buttonSearch {
-  color: #3b3fce;
+  color: #000000;
   cursor: pointer;
   font-weight: bold;
   background-color: #9E9E9E;
@@ -81,7 +111,7 @@ form {
   border: 1px solid #0000005c;
   margin-left: 10px;
   background-color: #8addff;
-  text-transform: lowercase;
+  text-transform: uppercase;
 }
 
 input {
@@ -113,11 +143,19 @@ input:focus, input:active {
   width: 40px;
   height: 40px;
   background-color: #8addff;
-  color: #3b3fce;
+  color: #000000;
 }
 
 .container-forcast {
   margin-block-start: 1.7em;
+}
+
+input.MuiInputBase-input.MuiOutlinedInput-input {
+  border: 4px double #3b3fce;
+}
+
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.MuiButton-containedPrimary {
+  padding: 15px 26px;
 }
 
 @keyframes App-logo-spin {

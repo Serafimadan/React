@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 
 
-const CityWeatherInformation = ({weatherInfo, deleteCard, index, loading }) => {
+const CityWeatherInformation = ({weatherInfo, deleteCard, index, loading, id}) => {
     const {cod, name, sys, weather, main, coord } = weatherInfo;
     
     function converterTemperature(valNum) {
@@ -11,13 +11,18 @@ const CityWeatherInformation = ({weatherInfo, deleteCard, index, loading }) => {
     }
     return (
         <div >
-        
             {loading && <div>Loadoing...</div>}
             {cod === 200 ?           
-                <div className = 'city-element'> 
+                <div className={
+                    typeof weather[0].main !== "undefined"
+                    ? converterTemperature(main.temp) >= 15
+                        ? "city-element hot"
+                        : "city-element cold"
+                    : "city-element"
+                }> 
                     <button className = 'removeButton' onClick = {() => deleteCard(index)}>X</button>
                     {/* go to city card to look forcast chart */}
-                    <Link  to={`/${index}`}>
+                    <Link  to={`/${id}`}>
                     <div className = 'information-container'>
                         <h2>{name}, {sys.country}</h2>
                         <div className = 'weather-inform'> 
