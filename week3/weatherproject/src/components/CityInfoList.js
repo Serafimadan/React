@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import SearchForm from './SearchingForm';
 import CityWeatherInformation from './CityWeatherInformation';
+const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 
 const CityInfoList = () => {
     let [city, setCity] = useState('');
     let [weatherInfo, setWeatherInfo] = useState([]);
     let [error, setError] = useState(false);
     let [loading, setLoading] = useState(false);
-    
-    const API_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
     
     function getWeatherInfo(e) {
         e.preventDefault();
@@ -27,12 +26,12 @@ const CityInfoList = () => {
             }
             setWeatherInfo([...weatherInfo, response]);
             setLoading(false);
-        })
+        } )
         .catch(error => {
             setError(true);
-            setLoading(false);
             console.log(error.message);
-        });
+        }) 
+        .finally(() => setLoading(false));
     }
     // delete weather card by id
     const deleteCard = (id) => {
